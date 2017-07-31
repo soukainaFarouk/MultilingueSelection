@@ -23,7 +23,6 @@
             app.controller('myCtrl', function($scope) {
                 $scope.firstName = "John";
                 $scope.lastName = "Doe";
-
                 $scope.lang = {
                     "fr":{
                         "title":"Bonjour",
@@ -46,7 +45,7 @@
                     $scope.fullNameLabel = $scope.lang[lang].fullNameLabel;
                 };
                 // initialisation de la langue par defaut
-                $scope.changeLang("en");
+                $scope.changeLang("fr");
             });
         </script>
 
