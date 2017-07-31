@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    </head>
+    <body>
+
+        <div ng-app="myApp" ng-controller="myCtrl">
+            {{title}} <br>
+            {{firstNameLabel}} : <input type="text" ng-model="firstName"><br>
+            {{lastNameLabel}} : <input type="text" ng-model="lastName"><br>
+            <br>
+            {{fullNameLabel}}: {{firstName + " " + lastName}}
+            <br>
+            <input type="button" value="FR" ng-click="changeLang('fr')">
+            <input type="button" value="EN" ng-click="changeLang('en')">
+
+        </div>
+
+        <script>
+            var app = angular.module('myApp', []);
+            app.controller('myCtrl', function($scope) {
+                $scope.firstName = "John";
+                $scope.lastName = "Doe";
+
+                $scope.lang = {
+                    "fr":{
+                        "title":"Bonjour",
+                        "firstNameLabel": "Prénom",
+                        "lastNameLabel": "Nom",
+                        "fullNameLabel": "Nom complet"
+                     },
+                    "en":{
+                        "title":"Hello",
+                        "firstNameLabel": "First Name",
+                        "lastNameLabel": "Last Name",
+                        "fullNameLabel":"Full Name"
+                     }
+                    };
+
+                $scope.changeLang = function(lang){
+                    $scope.title = $scope.lang[lang].title;
+                    $scope.firstNameLabel = $scope.lang[lang].firstNameLabel;
+                    $scope.lastNameLabel = $scope.lang[lang].lastNameLabel;
+                    $scope.fullNameLabel = $scope.lang[lang].fullNameLabel;
+                };
+                // initialisation de la langue par defaut
+                $scope.changeLang("en");
+            });
+        </script>
+
+    </body>
+</html>
